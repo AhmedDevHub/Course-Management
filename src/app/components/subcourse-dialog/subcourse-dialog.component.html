@@ -1,0 +1,37 @@
+<p-dialog [(visible)]="visible" [modal]="true" [style]="{width: '450px'}" [header]="dialogTitle" [draggable]="false"
+  [resizable]="false" (onHide)="hideDialog()">
+
+  <form [formGroup]="subcourseForm" (ngSubmit)="saveSubcourse()">
+    <div class="field">
+      <label for="name">Name</label>
+      <input type="text" pInputText id="name" formControlName="name" class="w-full" />
+      @if (subcourseForm.controls['name'].invalid && subcourseForm.controls['name'].touched) {
+      <small class="p-error">Name is required.</small>
+      }
+    </div>
+
+    <div class="field">
+      <label for="startDate">Start Date</label>
+      <p-calendar formControlName="startDate" [showIcon]="true" inputId="startDate" dateFormat="dd/mm/yy"
+        class="w-full"></p-calendar>
+      @if (subcourseForm.controls['startDate'].invalid && subcourseForm.controls['startDate'].touched) {
+      <small class="p-error">Start date is required.</small>
+      }
+    </div>
+
+    <div class="field">
+      <label for="endDate">End Date</label>
+      <p-calendar formControlName="endDate" [showIcon]="true" inputId="endDate" dateFormat="dd/mm/yy"
+        class="w-full"></p-calendar>
+      @if (subcourseForm.controls['endDate'].invalid && subcourseForm.controls['endDate'].touched) {
+      <small class="p-error">End date is required.</small>
+      }
+    </div>
+
+    <div class="flex justify-content-end">
+      <button type="button" pButton icon="pi pi-times" label="Cancel" class="p-button-text"
+        (click)="hideDialog()"></button>
+      <button type="submit" pButton icon="pi pi-check" label="Save" [disabled]="subcourseForm.invalid"></button>
+    </div>
+  </form>
+</p-dialog>
