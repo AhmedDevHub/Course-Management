@@ -9,7 +9,7 @@ import { Course, Subcourse } from '../models/course';
 export class CourseService {
   private coursesSubject = new BehaviorSubject<Course[]>([]);
   courses$ = this.coursesSubject.asObservable();
-  private dataUrl = 'http://localhost:3000/courses';
+  private dataUrl = '../../../courses.json';
   private nextCourseId = 1;
   private nextSubcourseId = 1;
 
